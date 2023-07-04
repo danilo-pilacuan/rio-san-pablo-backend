@@ -6,20 +6,20 @@ export class User {
   id: number;
 
   @Column()
-  firstName: string;
+  nombres: string;
 
   @Column()
-  lastName: string;
+  apellidos: string;
 
   @Column()
-  email: string;
+  correo: string;
 
   @Column()
-  password: string;
+  clave: string;
 
   @Column({ default: true })
-  isActive: boolean;
+  activo: boolean;
 
   @Column()
-  type: number;
+  tipo: number;
 }

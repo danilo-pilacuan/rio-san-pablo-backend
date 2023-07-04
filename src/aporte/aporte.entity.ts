@@ -1,4 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn,ManyToOne, OneToOne} from 'typeorm';
+import { Reporte } from '../reporte/reporte.entity';
+import { Recibo } from 'src/recibo/recibo.entity';
+import { Tarjeta } from 'src/tarjeta/tarjeta.entity';
+import { Socio } from 'src/socio/socio.entity';
 
 @Entity()
 export class Aporte {
@@ -8,16 +12,16 @@ export class Aporte {
   @Column()
   numDisco: string;
 
-  @Column()
-  nombreSocio: string;
+  // @Column() //relacionar a socio
+  // nombreSocio: string;
 
-  @Column()
-  numRecibo: string;
+  // @Column() //autogenerar o crear tabla recibo
+  // numRecibo: string;
 
   @Column()
   cantidad: number;
 
-  @Column({type: "decimal", precision: 10, scale: 2, default: 0})
+  @Column({type: "decimal", precision: 10, scale: 2, default: 0}) 
   tarjetaActual: number;
 
   @Column({type: "decimal", precision: 10, scale: 2, default: 0})
@@ -38,4 +42,20 @@ export class Aporte {
   @Column({type: "decimal", precision: 10, scale: 2, default: 0})
   total: number;
 
+  @ManyToOne(() => Reporte, (reporte) => reporte.aportes)
+    reporte: Reporte
+
+  @ManyToOne(() => Socio, (socio) => socio.aportes)
+  socio: Socio
+  
+  @ManyToOne(() => Recibo, (recibo) => recibo.aporte)
+  recibo: Recibo
+  
+  @ManyToOne(() => Tarjeta, (tarjeta) => tarjeta.aporte)
+  tarjeta: Tarjeta
+
+  //socio, recibo, tarjeta
+  
+
+  //adicionar relacion a reporte
 }

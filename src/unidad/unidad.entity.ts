@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Tarjeta } from 'src/tarjeta/tarjeta.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class Unidad {
@@ -19,5 +20,8 @@ export class Unidad {
 
   @Column({ default: true })
   activo: boolean;
+
+  @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.unidad)
+    tarjetas: Tarjeta[]
   
 }

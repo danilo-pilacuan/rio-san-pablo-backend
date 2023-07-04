@@ -5,13 +5,30 @@ import { UnidadModule } from './unidad/unidad.module';
 import { RutaModule } from './ruta/ruta.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
-import { User } from './users/user.entity';
-import { Socio } from './socio/socio.entity';
-import { UsersModule } from './users/users.module';
+
+import { UserModule } from './user/user.module';
 import { SocioModule } from './socio/socio.module';
 import { ReporteModule } from './reporte/reporte.module';
 import { AporteModule } from './aporte/aporte.module';
-import { Unidad } from './unidad/unidad.entity';
+
+import { InventarioModule } from './inventario/inventario.module';
+import { TarjetaModule } from './tarjeta/tarjeta.module';
+import { ReciboModule } from './recibo/recibo.module';
+import { ParadaModule } from './parada/parada.module';
+
+// import { Aporte } from './Aporte/Aporte.entity';
+// import { Inventario } from './Inventario/Inventario.entity';
+// import { Parada } from './Parada/Parada.entity';
+// import { Recibo } from './Recibo/Recibo.entity';
+// import { Reporte } from './Reporte/Reporte.entity';
+// import { Ruta } from './Ruta/Ruta.entity';
+// import { Socio } from './Socio/Socio.entity';
+// import { Tarjeta } from './Tarjeta/Tarjeta.entity';
+// import { Unidad } from './Unidad/Unidad.entity';
+// import { User } from './User/User.entity';
+import { CalendarioModule } from './calendario/calendario.module';
+
+
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -21,9 +38,9 @@ import { Unidad } from './unidad/unidad.entity';
       username: 'root',
       password: '',
       database: 'dbTransporte',
-      entities: [User,Socio,Unidad],
+      autoLoadEntities: true,
       synchronize: false,
-    }), UnidadModule, RutaModule, UsersModule, SocioModule, ReporteModule,AporteModule],
+    }), UnidadModule, RutaModule, UserModule, SocioModule, ReporteModule,AporteModule, InventarioModule, TarjetaModule, ReciboModule, ParadaModule, CalendarioModule],
   controllers: [AppController],
   providers: [AppService],
 })
