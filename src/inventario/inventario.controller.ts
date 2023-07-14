@@ -29,9 +29,9 @@ export class InventarioController {
     }
   }
 
-  @Put(':id')
-  async updateInventario(@Res() res: Response, @Param('id') inventarioId: number, @Body() updateInventarioDTO: UpdateInventarioDTO) {
-    updateInventarioDTO.id = inventarioId;
+  @Put()
+  async updateInventario(@Res() res: Response, @Body() updateInventarioDTO: UpdateInventarioDTO) {
+    // updateInventarioDTO.id = inventarioId;
     const updatedInventario = await this.inventarioService.updateInventario(updateInventarioDTO);
     return res.status(HttpStatus.OK).json({ updatedInventario });
   }

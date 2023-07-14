@@ -17,7 +17,9 @@ export class InventarioService {
   }
 
   async updateInventario(updateInventarioDTO: UpdateInventarioDTO) {
+
     const updatedInventario = await this.inventarioRepository.save(updateInventarioDTO);
+  
     return updatedInventario;
   }
 
