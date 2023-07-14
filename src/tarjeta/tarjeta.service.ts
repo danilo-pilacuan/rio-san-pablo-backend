@@ -12,8 +12,16 @@ export class TarjetaService {
   ) {}
 
   async createTarjeta(createTarjetaDTO: CreateTarjetaDTO): Promise<Tarjeta> {
-    const createdTarjeta = await this.tarjetaRepository.save(createTarjetaDTO);
-    return createdTarjeta;
+    // const createdTarjeta = await this.tarjetaRepository.save(createTarjetaDTO);
+    // return createdTarjeta;
+    let tarjetaNueva = new Tarjeta();
+    tarjetaNueva.fecha=createTarjetaDTO.fecha;
+    tarjetaNueva.observaciones=createTarjetaDTO.observaciones;
+    tarjetaNueva.chofer=<any>{id: createTarjetaDTO.idChofer};
+    tarjetaNueva.controlador=<any>{id: createTarjetaDTO.idControlador};
+    tarjetaNueva.ruta=<any>{id: createTarjetaDTO.idRuta};
+    tarjetaNueva.unidad=<any>{id: createTarjetaDTO.idUnidad};
+    return await this.tarjetaRepository.save(tarjetaNueva);
   }
 
   async updateTarjeta(updateTarjetaDTO: UpdateTarjetaDTO): Promise<Tarjeta> {
@@ -22,12 +30,25 @@ export class TarjetaService {
   }
 
   findAll(): Promise<Tarjeta[]> {
-    return this.tarjetaRepository.find();
+    return this.tarjetaRepository.find({relations:{
+      chofer:true,
+      unidad:true,
+      controlador:true,
+      ruta:true
+    }});
   }
 
   findOne(id: number): Promise<Tarjeta | null> {
     return this.tarjetaRepository.findOneBy({id});
   }
+
+  // findByReporteId(idReporte: number): Promise<Tarjeta[]> {
+  //   return this.tarjetaRepository.find({
+  //     where:{
+
+  //     }
+  //   });
+  // }
 
   async remove(id: number): Promise<DeleteResult> {
     const result = await this.tarjetaRepository.delete(id);

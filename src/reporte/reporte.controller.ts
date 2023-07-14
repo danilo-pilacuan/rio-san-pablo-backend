@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, Res, HttpStatus } from '@nestjs/common';
 import { ReporteService } from './reporte.service';
 import { CreateReporteDTO, UpdateReporteDTO } from './dto/reporte.dto';
 import { Reporte } from './reporte.entity';
+import { Request,Response } from 'express';
 
 @Controller('reportes')
 export class ReporteController {
@@ -18,8 +19,11 @@ export class ReporteController {
   }
 
   @Get()
-  findAllReportes(): Promise<Reporte[]> {
-    return this.reporteService.findAllReportes();
+  async findAllReportes(@Res() res:Response) {
+    const reportes= await this.reporteService.findAllReportes();
+    return res.status(HttpStatus.OK).json({
+      "data":reportes
+    })
   }
 
   @Get(':id')
@@ -28,7 +32,21 @@ export class ReporteController {
   }
 
   @Delete(':id')
-  deleteReporte(@Param('id') id: number): Promise<void> {
-    return this.reporteService.deleteReporte(id);
+  async deleteReporte(@Res() res,@Param('id') id: number) {
+    
+    const deletedReporte = await this.reporteService.deleteReporte(id);
+
+        if(deletedReporte)
+        {
+            return res.status(HttpStatus.OK).json({
+                "ok":"ok"
+            })    
+        }
+        else
+        {
+            return res.status(HttpStatus.NOT_FOUND).json({
+                "error":"error"
+            })    
+        }
   }
 }

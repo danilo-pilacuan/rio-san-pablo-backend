@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn,OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn,OneToMany, ManyToOne } from 'typeorm';
 import { Aporte } from '../aporte/aporte.entity';
+import { Tarjeta } from 'src/tarjeta/tarjeta.entity';
 
 @Entity()
 export class Reporte {
@@ -33,6 +34,9 @@ export class Reporte {
   @OneToMany(() => Aporte, (aporte) => aporte.reporte)
     aportes: Aporte[]
 
+  // @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.reporte)
+  //   tarjetas: Tarjeta[]
+
   // @OneToMany(() => Aporte, aporte => aporte.reporte)
   // aportes: Aporte[];
 
@@ -45,6 +49,8 @@ export class Reporte {
   // @OneToMany(type => Aporte)
   // @JoinColumn({ name: "reporte_id",referencedColumnName: "id" })
   // aportes: Aporte[];
+
+  
 
 }
 

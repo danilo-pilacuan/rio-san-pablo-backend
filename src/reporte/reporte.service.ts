@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DeleteResult, Repository } from 'typeorm';
 import { Reporte } from './reporte.entity';
 import { CreateReporteDTO, UpdateReporteDTO } from './dto/reporte.dto';
 
@@ -14,6 +14,8 @@ export class ReporteService {
   async createReporte(createReporteDTO: CreateReporteDTO): Promise<Reporte> {
     const reporte = this.reporteRepository.create(createReporteDTO);
     return this.reporteRepository.save(reporte);
+
+    
   }
 
   async updateReporte(id: number, updateReporteDTO: UpdateReporteDTO): Promise<Reporte | null> {
@@ -34,7 +36,7 @@ export class ReporteService {
     return this.reporteRepository.findOneBy({id});
   }
 
-  async deleteReporte(id: number): Promise<void> {
-    await this.reporteRepository.delete(id);
+  async deleteReporte(id: number): Promise<DeleteResult> {
+    return await this.reporteRepository.delete(id);
   }
 }

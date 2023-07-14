@@ -16,10 +16,10 @@ export class Ruta {
   @Column()
   lugarFin: string;
 
-  @Column({ type: 'date' })
+  @Column()
   horaInicio: string;
 
-  @Column({ type: 'date' })
+  @Column()
   horaFin: string;
 
   @Column({ default: true })

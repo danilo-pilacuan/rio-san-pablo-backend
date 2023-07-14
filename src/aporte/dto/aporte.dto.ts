@@ -33,6 +33,15 @@ export class CreateAporteDTO {
     @ApiProperty()
 
     total: number;
+    @ApiProperty()
+    reporteId:number
+    @ApiProperty()
+    socioId:number
+    @ApiProperty()
+    reciboId:number
+    @ApiProperty()
+    tarjetaId:number
+
   }
   
   export class UpdateAporteDTO {

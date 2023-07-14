@@ -11,6 +11,8 @@ export class CreateTarjetaDTO {
     idControlador: number;
     @ApiProperty()
     fecha: Date;
+    @ApiProperty()
+    observaciones: string;
   }
   
   export class UpdateTarjetaDTO {
@@ -26,5 +28,7 @@ export class CreateTarjetaDTO {
     idControlador: number;
     @ApiProperty()
     fecha: Date;
+    @ApiProperty()
+    observaciones: string;
   }
   

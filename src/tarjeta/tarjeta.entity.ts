@@ -1,5 +1,6 @@
 import { Aporte } from 'src/aporte/aporte.entity';
 import { Parada } from 'src/parada/parada.entity';
+import { Reporte } from 'src/reporte/reporte.entity';
 import { Ruta } from 'src/ruta/ruta.entity';
 import { Socio } from 'src/socio/socio.entity';
 import { Unidad } from 'src/unidad/unidad.entity';
@@ -57,4 +58,7 @@ export class Tarjeta {
   
   @OneToOne(() => Aporte, (aporte) => aporte.tarjeta)
   aporte: Aporte
+
+  // @ManyToOne(() => Reporte, (reporte) => reporte.tarjetas)
+  // reporte: Reporte
 }

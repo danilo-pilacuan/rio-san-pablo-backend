@@ -1,22 +1,41 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, Res, HttpStatus } from '@nestjs/common';
 import { TarjetaService } from './tarjeta.service';
 import { CreateTarjetaDTO, UpdateTarjetaDTO } from './dto/tarjeta.dto';
 import { Tarjeta } from './tarjeta.entity';
 import { DeleteResult } from 'typeorm';
+import { Request, Response } from 'express';
 
 @Controller('tarjetas')
 export class TarjetaController {
   constructor(private tarjetaService: TarjetaService) {}
 
   @Get()
-  findAll(): Promise<Tarjeta[]> {
-    return this.tarjetaService.findAll();
+  async findAll(@Res() res: Response){
+    
+    const tarjetas = await this.tarjetaService.findAll();
+    return res.status(HttpStatus.OK).json({
+      data: tarjetas,
+    });
   }
 
   @Get(':id')
   findOne(@Param('id') id: number): Promise<Tarjeta | null> {
     return this.tarjetaService.findOne(id);
   }
+
+  // @Get(':idReporte')
+  // findByReporte(@Param('idReporte') idReporte: number): Promise<Tarjeta | null> {
+  //   return this.tarjetaService.findAll({
+  //     where:{
+  //       idReporte:idReporte
+  //     }
+  //   })
+  // }
+
+  // @Get(':idAporte')
+  // findByAporte(@Param('id') id: number): Promise<Tarjeta | null> {
+  //   return this.tarjetaService.findOne(id);
+  // }
 
   @Post()
   create(@Body() createTarjetaDTO: CreateTarjetaDTO): Promise<Tarjeta> {
