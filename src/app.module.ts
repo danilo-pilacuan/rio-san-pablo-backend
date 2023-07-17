@@ -27,6 +27,7 @@ import { ParadaModule } from './parada/parada.module';
 // import { Unidad } from './Unidad/Unidad.entity';
 // import { User } from './User/User.entity';
 import { CalendarioModule } from './calendario/calendario.module';
+import { CalendarioRutaModule } from './calendario-ruta/calendario-ruta.module';
 
 
 
@@ -40,7 +41,7 @@ import { CalendarioModule } from './calendario/calendario.module';
       database: 'dbTransporte',
       autoLoadEntities: true,
       synchronize: false,
-    }), UnidadModule, RutaModule, UserModule, SocioModule, ReporteModule,AporteModule, InventarioModule, TarjetaModule, ReciboModule, ParadaModule, CalendarioModule],
+    }), UnidadModule, RutaModule, UserModule, SocioModule, ReporteModule,AporteModule, InventarioModule, TarjetaModule, ReciboModule, ParadaModule, CalendarioModule, CalendarioRutaModule],
   controllers: [AppController],
   providers: [AppService],
 })

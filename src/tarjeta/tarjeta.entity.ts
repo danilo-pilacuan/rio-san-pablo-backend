@@ -59,6 +59,6 @@ export class Tarjeta {
   @OneToOne(() => Aporte, (aporte) => aporte.tarjeta)
   aporte: Aporte
 
-  // @ManyToOne(() => Reporte, (reporte) => reporte.tarjetas)
-  // reporte: Reporte
+  @ManyToOne(() => Reporte, (reporte) => reporte.tarjetas)
+  reporte: Reporte
 }

@@ -64,4 +64,18 @@ export class AporteService {
   async remove(id: number): Promise<DeleteResult> {
     return this.aporteRepository.delete(id);
   }
+
+  async findByReporteId(idReporte: number): Promise<Aporte[]> {
+    return await this.aporteRepository.find({
+      relations:{
+        reporte:true,
+        socio:true
+      },
+      where:{
+        reporte:{
+          id: idReporte
+        }
+      }
+    });
+  }
 }

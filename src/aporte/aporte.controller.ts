@@ -23,6 +23,14 @@ export class AporteController {
     });
   }
 
+  @Get('byIdReporte/:idReporte')
+  async findByReporte(@Param('idReporte') idReporte: number,@Res() res: Response){
+    const aportes= await this.aporteService.findByReporteId(idReporte);
+    return res.status(HttpStatus.OK).json({
+      data: aportes,
+    });
+  }
+
   @Get(':id')
   async getAporteById(@Res() res: Response, @Param('id') aporteId: number) {
     const aporte = await this.aporteService.findOne(aporteId);

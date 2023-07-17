@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, ManyToMany, OneToMany } from 'typeorm';
 import { Calendario } from '../calendario/calendario.entity';
 import { Tarjeta } from 'src/tarjeta/tarjeta.entity';
+import { CalendarioRuta } from 'src/calendario-ruta/calendario-ruta.entity';
 
 @Entity()
 export class Ruta {
@@ -28,7 +29,9 @@ export class Ruta {
   @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.ruta)
     tarjetas: Tarjeta[]
   
-  @ManyToMany(() => Calendario, (calendario) => calendario.rutas)
-    calendarios: Calendario[]
+  // @ManyToMany(() => Calendario, (calendario) => calendario.rutas)
+  //   calendarios: Calendario[]
 
+  @OneToMany(() => CalendarioRuta, (calendarioRuta) => calendarioRuta.ruta)
+  rutasCalendario: CalendarioRuta[]
 }

@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, Res, HttpStatus } from '@nestjs/common';
 import { CalendarioService } from './calendario.service';
 import { CreateCalendarioDTO, UpdateCalendarioDTO } from './dto/calendario.dto';
 import { Calendario } from './calendario.entity';
+import { Request, Response } from 'express';
 
 @Controller('calendarios')
 export class CalendarioController {
@@ -18,8 +19,11 @@ export class CalendarioController {
   }
 
   @Get()
-  findAllCalendarios(): Promise<Calendario[]> {
-    return this.calendarioService.findAllCalendarios();
+  async findAllCalendarios(@Res() res: Response) {
+    const calendarios = await this.calendarioService.findAllCalendarios();
+    return res.status(HttpStatus.OK).json({
+      data: calendarios,
+    });
   }
 
   @Get(':id')

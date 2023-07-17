@@ -34,6 +34,9 @@ export class Reporte {
   @OneToMany(() => Aporte, (aporte) => aporte.reporte)
     aportes: Aporte[]
 
+  @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.reporte)
+    tarjetas: Tarjeta[]
+
   // @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.reporte)
   //   tarjetas: Tarjeta[]
 

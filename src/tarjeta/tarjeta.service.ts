@@ -21,6 +21,7 @@ export class TarjetaService {
     tarjetaNueva.controlador=<any>{id: createTarjetaDTO.idControlador};
     tarjetaNueva.ruta=<any>{id: createTarjetaDTO.idRuta};
     tarjetaNueva.unidad=<any>{id: createTarjetaDTO.idUnidad};
+    tarjetaNueva.reporte=<any>{id: createTarjetaDTO.reporteId};
     return await this.tarjetaRepository.save(tarjetaNueva);
   }
 
@@ -42,13 +43,22 @@ export class TarjetaService {
     return this.tarjetaRepository.findOneBy({id});
   }
 
-  // findByReporteId(idReporte: number): Promise<Tarjeta[]> {
-  //   return this.tarjetaRepository.find({
-  //     where:{
-
-  //     }
-  //   });
-  // }
+  async findByReporteId(idReporte: number): Promise<Tarjeta[]> {
+    return await this.tarjetaRepository.find({
+      relations:{
+        reporte:true,
+        chofer:true,
+        unidad:true,
+        controlador:true,
+        ruta:true
+      },
+      where:{
+        reporte:{
+          id: idReporte
+        }
+      }
+    });
+  }
 
   async remove(id: number): Promise<DeleteResult> {
     const result = await this.tarjetaRepository.delete(id);

@@ -10,6 +10,8 @@ export class CreateTarjetaDTO {
     @ApiProperty()
     idControlador: number;
     @ApiProperty()
+    reporteId: number;
+    @ApiProperty()
     fecha: Date;
     @ApiProperty()
     observaciones: string;
@@ -26,6 +28,8 @@ export class CreateTarjetaDTO {
     idChofer: number;
     @ApiProperty()
     idControlador: number;
+    @ApiProperty()
+    reporteId: number;
     @ApiProperty()
     fecha: Date;
     @ApiProperty()

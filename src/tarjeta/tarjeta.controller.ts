@@ -23,14 +23,13 @@ export class TarjetaController {
     return this.tarjetaService.findOne(id);
   }
 
-  // @Get(':idReporte')
-  // findByReporte(@Param('idReporte') idReporte: number): Promise<Tarjeta | null> {
-  //   return this.tarjetaService.findAll({
-  //     where:{
-  //       idReporte:idReporte
-  //     }
-  //   })
-  // }
+  @Get('byIdReporte/:idReporte')
+  async findByReporte(@Param('idReporte') idReporte: number,@Res() res: Response){
+    const tarjetas= await this.tarjetaService.findByReporteId(idReporte);
+    return res.status(HttpStatus.OK).json({
+      data: tarjetas,
+    });
+  }
 
   // @Get(':idAporte')
   // findByAporte(@Param('id') id: number): Promise<Tarjeta | null> {

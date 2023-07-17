@@ -4,9 +4,9 @@ export class CreateCalendarioDTO {
     @ApiProperty()
     descripcion: string;
     @ApiProperty()
-    mes: string;
+    mes: number;
     @ApiProperty()
-    anio: string;
+    anio: number;
     @ApiProperty()
     observaciones: string;
   }
@@ -17,9 +17,9 @@ export class CreateCalendarioDTO {
     @ApiProperty()
     descripcion?: string;
     @ApiProperty()
-    mes?: string;
+    mes?: number;
     @ApiProperty()
-    anio?: string;
+    anio?: number;
     @ApiProperty()
     observaciones?: string;
   }
