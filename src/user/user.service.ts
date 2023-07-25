@@ -16,6 +16,24 @@ export class UserService {
     return this.userRepository.save(user);
   }
 
+  async loginUser(createUserDTO: CreateUserDTO): Promise<User|null> {
+    
+    const user = await this.userRepository.findOne({
+      where:{
+        correo:createUserDTO.correo
+      }
+    });
+    console.log(user)
+    if (!user) {
+      console.log("nullllllllllllll")
+      return null;
+    }
+
+    console.log("notttttttttt")
+
+    return user;
+  }
+
   async updateUser(id: number, updateUserDTO: UpdateUserDTO): Promise<User | null> {
     const user = await this.userRepository.findOneBy({id});
     if (!user) {

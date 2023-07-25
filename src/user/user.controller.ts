@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, Res, HttpStatus } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDTO, UpdateUserDTO } from './dto/user.dto';
 import { User } from './user.entity';
@@ -25,6 +25,31 @@ export class UserController {
   @Get(':id')
   findOneUser(@Param('id') id: number): Promise<User | null> {
     return this.userService.findOneUser(id);
+  }
+  
+  @Post('login')
+  async loginUser(@Body() createUserDTO: CreateUserDTO,@Res() res): Promise<User | null> {
+    console.log("llllllllloooooooooooooggggggggggiiiiiiiiiiiiinnnnnnnn")
+    console.log(createUserDTO)
+    const usuario = await this.userService.loginUser(createUserDTO);
+    if (usuario) {
+      if(usuario.clave==createUserDTO.clave)
+      {
+        return res.status(HttpStatus.OK).json({ "usuario": usuario });
+      }
+      else
+      {
+        return res.status(HttpStatus.NOT_FOUND).json({ error: 'Usuario not found' });  
+      }
+      
+    } else {
+      return res.status(HttpStatus.NOT_FOUND).json({ error: 'Usuario not found' });
+    }
+
+    // return res.status(HttpStatus.OK).json({
+    //   "ok":"ok"
+    // })    
+    //return this.userService.findOneUser(id);
   }
 
   @Delete(':id')
