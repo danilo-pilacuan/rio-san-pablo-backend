@@ -28,11 +28,17 @@ import { ParadaModule } from './parada/parada.module';
 // import { User } from './User/User.entity';
 import { CalendarioModule } from './calendario/calendario.module';
 import { CalendarioRutaModule } from './calendario-ruta/calendario-ruta.module';
-
+import { join } from 'path';
+import { ServeStaticModule } from '@nestjs/serve-static';
 
 
 @Module({
-  imports: [TypeOrmModule.forRoot({
+  imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'assets'),
+      serveRoot:"/assets"
+    })
+    ,TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
       port: 3306,
