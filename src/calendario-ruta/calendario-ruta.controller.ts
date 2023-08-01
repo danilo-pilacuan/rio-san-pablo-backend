@@ -13,6 +13,13 @@ export class CalendarioRutaController {
     return this.calendarioRutaService.createCalendarioRuta(createCalendarioRutaDTO);
   }
 
+  @Post("createCalendarioRutaBatch")
+  async createCalendarioRutaBatch(@Body() createCalendarioRutaDTO: CreateCalendarioRutaDTO,@Res() res: Response){
+    let respuesta= await this.calendarioRutaService.createCalendarioRutaBatch(createCalendarioRutaDTO);
+    return res.status(HttpStatus.OK).json({"data":respuesta});
+    
+  }
+
   @Put(':id')
   updateCalendarioRuta(@Param('id') id: number, @Body() updateCalendarioRutaDTO: UpdateCalendarioRutaDTO): Promise<CalendarioRuta | null> {
     return this.calendarioRutaService.updateCalendarioRuta(id, updateCalendarioRutaDTO);
@@ -29,9 +36,16 @@ export class CalendarioRutaController {
   }
 
   @Get(':id')
-  findOneCalendarioRuta(@Param('id') id: number): Promise<CalendarioRuta | null> {
-    return this.calendarioRutaService.findOneCalendarioRuta(id);
+  async findOneCalendarioRuta(@Res() res: Response,@Param('id') id: number){
+    const calendarioRuta=await this.calendarioRutaService.findOneCalendarioRuta(id)
+    console.log("------------------------------")
+    console.log(calendarioRuta)
+    return res.status(HttpStatus.OK).json({
+      data: calendarioRuta,
+    });
+    
   }
+  
 
   @Delete(':id')
   deleteCalendarioRuta(@Param('id') id: number): Promise<void> {

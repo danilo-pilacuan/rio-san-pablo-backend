@@ -18,9 +18,6 @@ export class CreateCalendarioRutaDTO {
     dia: number;
     @ApiProperty()
     valor: number;
-    @ApiProperty()
-    calendarioId: number;
-    @ApiProperty()
-    rutaId: number;
+    
   }
   

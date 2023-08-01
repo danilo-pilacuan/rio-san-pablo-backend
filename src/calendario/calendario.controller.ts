@@ -27,8 +27,12 @@ export class CalendarioController {
   }
 
   @Get(':id')
-  findOneCalendario(@Param('id') id: number): Promise<Calendario | null> {
-    return this.calendarioService.findOneCalendario(id);
+  async findOneCalendario(@Param('id') id: number,@Res() res: Response){
+    const calendario=await this.calendarioService.findOneCalendario(id);
+    return res.status(HttpStatus.OK).json({
+      data: calendario,
+    });
+    
   }
 
   @Delete(':id')

@@ -44,7 +44,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
       port: 3306,
       username: 'root',
       password: '',
-      database: 'dbTransporte',
+      database: 'dbtransporte',
       autoLoadEntities: true,
       synchronize: false,
     }), UnidadModule, RutaModule, UserModule, SocioModule, ReporteModule,AporteModule, InventarioModule, TarjetaModule, ReciboModule, ParadaModule, CalendarioModule, CalendarioRutaModule],

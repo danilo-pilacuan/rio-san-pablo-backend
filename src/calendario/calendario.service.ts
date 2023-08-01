@@ -60,11 +60,26 @@ export class CalendarioService {
   }
 
   async findAllCalendarios(): Promise<Calendario[]> {
-    return this.calendarioRepository.find();
+    return this.calendarioRepository.find({
+      // relations:{
+      //   rutasCalendario:true
+      // }
+    });
   }
 
   async findOneCalendario(id: number): Promise<Calendario | null> {
-    return this.calendarioRepository.findOneBy({id});
+    return await this.calendarioRepository.findOne({
+      where:{
+        id:id
+      },
+        // relations:{
+        //   rutasCalendario:
+        //   {
+        //     ruta: true
+        //   }
+          
+        // }
+      });
   }
 
   async deleteCalendario(id: number): Promise<void> {

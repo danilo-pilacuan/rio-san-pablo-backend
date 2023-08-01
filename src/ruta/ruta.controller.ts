@@ -38,6 +38,21 @@ export class RutaController {
     }
   }
 
+  @Get('getByCalendarioId/:id')
+  async findByCalendarioId(@Res() res: Response, @Param('id') rutaId: number) {
+    const ruta = await this.rutaService.findByCalendarioId(rutaId);
+
+    if (ruta) {
+      return res.status(HttpStatus.OK).json({
+        data: ruta
+      });
+    } else {
+      return res.status(HttpStatus.NOT_FOUND).json({
+        error: 'Ruta not found'
+      });
+    }
+  }
+
   @Put(':id')
   async updateRuta(@Res() res: Response, @Param('id') rutaId: number, @Body() updateRutaDTO: UpdateRutaDTO) {
     const updatedRuta = await this.rutaService.updateRuta(rutaId, updateRutaDTO);

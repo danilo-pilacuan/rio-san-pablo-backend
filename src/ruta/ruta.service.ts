@@ -36,6 +36,25 @@ export class RutaService {
     return this.rutasRepository.findOneBy({id});
   }
 
+
+  async findByCalendarioId(id: number): Promise<Ruta[] | null> {
+    return await this.rutasRepository.find({
+      where:{
+        rutasCalendario:
+        {
+          calendario:{
+            id:id
+          }
+        }
+      },
+      relations:
+      {
+        rutasCalendario:true
+      }
+    })
+  }
+
+
   async remove(id: number): Promise<DeleteResult> {
     return this.rutasRepository.delete(id);
   }
