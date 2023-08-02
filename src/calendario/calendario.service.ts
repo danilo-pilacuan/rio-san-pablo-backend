@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Calendario } from './calendario.entity';
+import { CalendarioRuta} from './../calendario-ruta/calendario-ruta.entity'
 import { CreateCalendarioDTO, UpdateCalendarioDTO } from './dto/calendario.dto';
 import { CreateCalendarioRutaDTO } from 'src/calendario-ruta/dto/calendario-ruta.dto';
 
@@ -10,6 +11,8 @@ export class CalendarioService {
   constructor(
     @InjectRepository(Calendario)
     private calendarioRepository: Repository<Calendario>,
+    @InjectRepository(CalendarioRuta)
+    private calendarioRutaRepository: Repository<CalendarioRuta>,
   ) {}
 
   async createCalendario(createCalendarioDTO: CreateCalendarioDTO): Promise<Calendario> {
@@ -83,6 +86,13 @@ export class CalendarioService {
   }
 
   async deleteCalendario(id: number): Promise<void> {
+    
+    await this.calendarioRutaRepository.delete({
+      calendario:{
+        id
+      }
+    })
+    
     await this.calendarioRepository.delete(id);
   }
 }

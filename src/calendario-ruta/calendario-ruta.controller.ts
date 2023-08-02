@@ -47,8 +47,23 @@ export class CalendarioRutaController {
   }
   
 
-  @Delete(':id')
-  deleteCalendarioRuta(@Param('id') id: number): Promise<void> {
-    return this.calendarioRutaService.deleteCalendarioRuta(id);
+  // @Delete(':id')
+  // deleteCalendarioRuta(@Param('id') id: number): Promise<void> {
+  //   console.log("......................")
+  //   return this.calendarioRutaService.deleteCalendarioRuta(id);
+  // }
+  
+  @Delete('/deleteBatch')
+  async deleteCalendarioRutaBatch(@Body() createCalendarioRutaDTO: CreateCalendarioRutaDTO,@Res() res: Response) {
+
+    // console.log("createCalendarioRutaDTO1")
+    // console.log(createCalendarioRutaDTO)
+
+    await this.calendarioRutaService.deleteCalendarioRutaBatch(createCalendarioRutaDTO);
+
+    return res.status(HttpStatus.OK).json({
+      data: "ok",
+    });
+
   }
 }

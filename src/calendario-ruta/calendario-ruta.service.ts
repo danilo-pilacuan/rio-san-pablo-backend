@@ -115,4 +115,37 @@ export class CalendarioRutaService {
   async deleteCalendarioRuta(id: number): Promise<void> {
     await this.calendarioRutaRepository.delete(id);
   }
+
+  async deleteCalendarioRutaBatch(createCalendarioRutaDTO: CreateCalendarioRutaDTO) {
+  
+    // console.log("createCalendarioRutaDTO")
+    // console.log(createCalendarioRutaDTO)
+
+  //   let listaCalendarioRutas= await this.calendarioRutaRepository.find({
+  //     where: {
+  //         ruta:{
+  //           id:createCalendarioRutaDTO.rutaId
+  //         },
+  //         calendario:{
+  //           id:createCalendarioRutaDTO.calendarioId
+  //         }
+  //     },
+  // })
+
+  //   if(listaCalendarioRutas)
+  //   {
+  //     await this.calendarioRutaRepository.delete(listaCalendarioRutas.map(obj=>obj.id));
+  //   }
+
+    await this.calendarioRutaRepository.delete({
+      ruta:{
+        id:createCalendarioRutaDTO.rutaId
+      },
+      calendario:{
+        id:createCalendarioRutaDTO.calendarioId
+      },
+    })
+
+  }
+
 }

@@ -36,7 +36,11 @@ export class CalendarioController {
   }
 
   @Delete(':id')
-  deleteCalendario(@Param('id') id: number): Promise<void> {
-    return this.calendarioService.deleteCalendario(id);
+  async deleteCalendario(@Param('id') id: number,@Res() res: Response) {
+    await this.calendarioService.deleteCalendario(id);
+
+    return res.status(HttpStatus.OK).json({
+      data: "ok",
+    });
   }
 }

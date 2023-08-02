@@ -3,10 +3,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CalendarioController } from './calendario.controller';
 import { CalendarioService } from './calendario.service';
 import { Calendario } from './calendario.entity';
+import { CalendarioRuta } from 'src/calendario-ruta/calendario-ruta.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Calendario])],
+  imports: [TypeOrmModule.forFeature([Calendario,CalendarioRuta])],
   controllers: [CalendarioController],
-  providers: [CalendarioService],
+  providers: [CalendarioService,CalendarioRuta],
 })
 export class CalendarioModule {}
