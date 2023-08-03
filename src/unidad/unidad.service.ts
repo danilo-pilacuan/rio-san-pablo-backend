@@ -28,9 +28,9 @@ async createUnidadImg(createUnidadDTO: CreateUnidadDTO,urlFotoUnidad:string): Pr
   // servicioNuevo.urlFotoNormal=urlFotoNormal;
   // servicioNuevo.urlFoto360=urlFoto360;
 
-  console.log("-----------------------------------------")
+  
   console.log(createUnidadDTO)
-  console.log("-----------------------------------------")
+  
 
   let unidadNueva = new Unidad();
   

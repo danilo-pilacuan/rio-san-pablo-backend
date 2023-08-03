@@ -38,7 +38,6 @@ export class CalendarioRutaController {
   @Get(':id')
   async findOneCalendarioRuta(@Res() res: Response,@Param('id') id: number){
     const calendarioRuta=await this.calendarioRutaService.findOneCalendarioRuta(id)
-    console.log("------------------------------")
     console.log(calendarioRuta)
     return res.status(HttpStatus.OK).json({
       data: calendarioRuta,

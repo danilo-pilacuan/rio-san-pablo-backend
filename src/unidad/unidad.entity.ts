@@ -1,3 +1,4 @@
+import { Flete } from 'src/flete/flete.entity';
 import { Tarjeta } from 'src/tarjeta/tarjeta.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
@@ -23,5 +24,8 @@ export class Unidad {
 
   @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.unidad)
     tarjetas: Tarjeta[]
+
+  @OneToMany(() => Flete, (flete) => flete.unidad)
+    fletes: Flete[]
   
 }

@@ -27,7 +27,7 @@ export class CalendarioRutaService {
 
   async createCalendarioRutaBatch(createCalendarioRutaDTO: CreateCalendarioRutaDTO):Promise<CalendarioRuta[]>
   {
-    console.log("-------------------------------------")
+    
     let calendarioId=0;
     let rutaId=0;
     let mes=0;

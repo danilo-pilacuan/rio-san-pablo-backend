@@ -23,7 +23,7 @@ export class UnidadController {
         }),
     },))
     async uploadFiles(@Res() res,@Body() createUnidadDTO: CreateUnidadDTO,@UploadedFiles() files: { fotoUnidad?: Express.Multer.File[]}) {
-        console.log("-------------------------------------------")
+        
         console.log(files);
         console.log(createUnidadDTO);
 
@@ -98,7 +98,7 @@ export class UnidadController {
         }),
     },))
     async updateInidadImg(@Res() res,@Body() updateUnidadDTO: UpdateUnidadDTO,@UploadedFiles() files: { fotoUnidad?: Express.Multer.File[]}) {
-        console.log("-------------------------------------------")
+        
         console.log(files);
         console.log(updateUnidadDTO);
 

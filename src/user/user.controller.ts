@@ -2,6 +2,7 @@ import { Controller, Get, Post, Put, Delete, Param, Body, Res, HttpStatus } from
 import { UserService } from './user.service';
 import { CreateUserDTO, UpdateUserDTO } from './dto/user.dto';
 import { User } from './user.entity';
+import { Response } from 'express';
 
 
 @Controller('users')
@@ -19,8 +20,13 @@ export class UserController {
   }
 
   @Get()
-  findAllUsers(): Promise<User[]> {
-    return this.userService.findAllUsers();
+  async findAllUsers(@Res() res: Response) {
+    const users = await this.userService.findAllUsers();
+    return res.status(HttpStatus.OK).json({
+      data: users
+    });
+
+    return 
   }
 
   @Get(':id')

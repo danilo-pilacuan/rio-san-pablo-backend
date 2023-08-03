@@ -30,6 +30,7 @@ import { CalendarioModule } from './calendario/calendario.module';
 import { CalendarioRutaModule } from './calendario-ruta/calendario-ruta.module';
 import { join } from 'path';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { FleteModule } from './flete/flete.module';
 
 
 @Module({
@@ -47,7 +48,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
       database: 'dbtransporte',
       autoLoadEntities: true,
       synchronize: false,
-    }), UnidadModule, RutaModule, UserModule, SocioModule, ReporteModule,AporteModule, InventarioModule, TarjetaModule, ReciboModule, ParadaModule, CalendarioModule, CalendarioRutaModule],
+    }), UnidadModule, RutaModule, UserModule, SocioModule, ReporteModule,AporteModule, InventarioModule, TarjetaModule, ReciboModule, ParadaModule, CalendarioModule, CalendarioRutaModule, FleteModule],
   controllers: [AppController],
   providers: [AppService],
 })
