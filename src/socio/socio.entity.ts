@@ -30,7 +30,7 @@ export class Socio {
   @Column()
   tipoSocio: number;
 
-  @Column({ default: true })
+  @Column({  type: "boolean",default: true })
   activo: boolean;
 
   @OneToMany(() => Inventario, (inventario) => inventario.socio)

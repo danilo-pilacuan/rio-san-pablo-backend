@@ -17,8 +17,8 @@ export class FleteService {
     createdFlete.descripcion=createFleteDTO.descripcion;
     createdFlete.lugarInicio=createFleteDTO.lugarInicio;
     createdFlete.lugarFin=createFleteDTO.lugarFin;
-    createdFlete.horaInicio=createFleteDTO.horaInicio;
-    createdFlete.horaFin=createFleteDTO.horaFin;
+    // createdFlete.horaInicio=createFleteDTO.horaInicio;
+    // createdFlete.horaFin=createFleteDTO.horaFin;
     createdFlete.fechaInicio=createFleteDTO.fechaInicio;
     createdFlete.fechaFin=createFleteDTO.fechaFin;
     createdFlete.numHoras=createFleteDTO.numHoras;
@@ -36,6 +36,7 @@ export class FleteService {
     }
 
     let updatedFlete = Object.assign(existingFlete, updateFleteDTO);
+    updatedFlete.activa=updateFleteDTO.activa;
     updatedFlete.unidad=<any>{id: updateFleteDTO.unidadId};
     await this.fletesRepository.save(updatedFlete);
     return updatedFlete;

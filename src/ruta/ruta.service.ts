@@ -23,9 +23,15 @@ export class RutaService {
       return null;
     }
 
+    console.log(updateRutaDTO)
+    console.log("***********************************************")
+    console.log(existingRuta)
+
     const updatedRuta = Object.assign(existingRuta, updateRutaDTO);
-    await this.rutasRepository.save(updatedRuta);
-    return updatedRuta;
+    
+    console.log(updatedRuta)
+    return await this.rutasRepository.save(updatedRuta);
+    
   }
 
   findAll(): Promise<Ruta[]> {

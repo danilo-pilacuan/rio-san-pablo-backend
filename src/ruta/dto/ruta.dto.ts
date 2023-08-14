@@ -29,6 +29,6 @@ export class CreateRutaDTO {
     @ApiProperty()
     horaFin?: string;
     @ApiProperty()
-    activa?: boolean;
+    activa: boolean;
   }
   

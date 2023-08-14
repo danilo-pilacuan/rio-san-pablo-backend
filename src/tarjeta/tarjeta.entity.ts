@@ -49,9 +49,6 @@ export class Tarjeta {
   @JoinColumn({ name: "controladorId" })
   public controlador: Socio;
 
-  // @ManyToOne(() => Project, project => project.id)
-  // @JoinColumn({ name: "successorId" })
-  // public successor?: Project;
 
   @OneToMany(() => Parada, (parada) => parada.tarjeta)
   paradas: Parada[]

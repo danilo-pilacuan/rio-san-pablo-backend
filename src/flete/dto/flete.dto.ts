@@ -7,15 +7,15 @@ export class CreateFleteDTO {
     lugarInicio: string;
     @ApiProperty()
     lugarFin: string;
+    // @ApiProperty()
+    // horaInicio: string;
+    // @ApiProperty()
+    // horaFin: string;
     @ApiProperty()
-    horaInicio: string;
-    @ApiProperty()
-    horaFin: string;
-    @ApiProperty()
-    fechaInicio: string;
+    fechaInicio: Date;
     
     @ApiProperty()
-    fechaFin: string;
+    fechaFin: Date;
 
     @ApiProperty()
     numHoras: number;
@@ -35,10 +35,10 @@ export class CreateFleteDTO {
     lugarInicio?: string;
     @ApiProperty()
     lugarFin?: string;
-    @ApiProperty()
-    horaInicio?: string;
-    @ApiProperty()
-    horaFin?: string;
+    // @ApiProperty()
+    // horaInicio?: string;
+    // @ApiProperty()
+    // horaFin?: string;
     @ApiProperty()
     fechaInicio?: string;
     
@@ -48,7 +48,7 @@ export class CreateFleteDTO {
     @ApiProperty()
     numHoras?: number;
     @ApiProperty()
-    activa?: boolean;
+    activa: boolean;
     @ApiProperty()
     unidadId: number;
   }

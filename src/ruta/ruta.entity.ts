@@ -23,7 +23,7 @@ export class Ruta {
   @Column()
   horaFin: string;
 
-  @Column({ default: true })
+  @Column({ type: "boolean", default: true })
   activa: boolean;
 
   @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.ruta)

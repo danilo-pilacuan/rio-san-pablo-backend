@@ -17,7 +17,7 @@ export class User {
   @Column()
   clave: string;
 
-  @Column({ default: true })
+  @Column({  type: "boolean",default: true })
   activo: boolean;
 
   @Column()

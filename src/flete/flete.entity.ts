@@ -18,22 +18,22 @@ export class Flete {
   @Column()
   lugarFin: string;
 
-  @Column()
-  horaInicio: string;
+  // @Column()
+  // horaInicio: string;
 
-  @Column()
-  horaFin: string;
+  // @Column()
+  // horaFin: string;
 
-  @Column()
-  fechaInicio: string;
+  @Column({ type: "datetime", default: () => "CURRENT_TIMESTAMP" })
+  fechaInicio: Date;
   
-  @Column()
-  fechaFin: string;
+  @Column({ type: "datetime", default: () => "CURRENT_TIMESTAMP" })
+  fechaFin: Date;
 
   @Column()
   numHoras: number;
 
-  @Column({ default: true })
+  @Column({ type: "boolean", default: true })
   activa: boolean;
 
   @ManyToOne(()=>Unidad,(unidad)=>unidad.fletes)
