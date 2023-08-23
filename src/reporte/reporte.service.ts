@@ -29,7 +29,12 @@ export class ReporteService {
   }
 
   async findAllReportes(): Promise<Reporte[]> {
-    return this.reporteRepository.find();
+    return this.reporteRepository.find({
+      relations:
+      {
+        aportes:true
+      }
+    });
   }
 
   async findOneReporte(id: number): Promise<Reporte | null> {

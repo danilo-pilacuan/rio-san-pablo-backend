@@ -15,7 +15,7 @@ export class Recibo {
   @Column()
   idSocio: number;
 
-  @OneToOne(() => Aporte, (aporte) => aporte.recibo)
+  @OneToOne(() => Aporte, (aporte) => aporte.recibo, { onDelete: "CASCADE" })
   aporte: Aporte
 
 }

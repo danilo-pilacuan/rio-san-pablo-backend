@@ -31,10 +31,10 @@ export class Reporte {
   @Column()
   recaudadora: string;
 
-  @OneToMany(() => Aporte, (aporte) => aporte.reporte)
+  @OneToMany(() => Aporte, (aporte) => aporte.reporte, { onDelete: "CASCADE" })
     aportes: Aporte[]
 
-  @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.reporte)
+  @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.reporte, { onDelete: "CASCADE" })
     tarjetas: Tarjeta[]
 
   // @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.reporte)

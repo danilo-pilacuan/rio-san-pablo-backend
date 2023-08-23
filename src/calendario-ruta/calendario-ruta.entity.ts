@@ -13,10 +13,10 @@ export class CalendarioRuta {
   @Column()
   valor:number;
 
-  @ManyToOne(() => Calendario, (calendario) => calendario.rutasCalendario)
+  @ManyToOne(() => Calendario, (calendario) => calendario.rutasCalendario, { onDelete: "CASCADE" })
   calendario: Calendario
 
-  @ManyToOne(() => Ruta, (ruta) => ruta.rutasCalendario)
+  @ManyToOne(() => Ruta, (ruta) => ruta.rutasCalendario, { onDelete: "CASCADE" })
   ruta: Ruta
 
 }

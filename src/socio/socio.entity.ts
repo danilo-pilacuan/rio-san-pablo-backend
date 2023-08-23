@@ -33,13 +33,13 @@ export class Socio {
   @Column({  type: "boolean",default: true })
   activo: boolean;
 
-  @OneToMany(() => Inventario, (inventario) => inventario.socio)
+  @OneToMany(() => Inventario, (inventario) => inventario.socio, { onDelete: "CASCADE" })
   inventarios: Inventario[]
 
-  @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.id)
+  @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.id, { onDelete: "CASCADE" })
   tarjetas: Tarjeta[]
 
-  @OneToMany(() => Aporte, (aporte) => aporte.socio)
+  @OneToMany(() => Aporte, (aporte) => aporte.socio, { onDelete: "CASCADE" })
   aportes: Aporte[]
 
 

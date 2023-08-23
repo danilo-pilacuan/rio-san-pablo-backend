@@ -18,7 +18,7 @@ export class Parada {
   @Column()
   idTarjeta: number;
 
-  @ManyToOne(() => Tarjeta, (tarjeta) => tarjeta.paradas)
+  @ManyToOne(() => Tarjeta, (tarjeta) => tarjeta.paradas, { onDelete: "CASCADE" })
   tarjeta: Tarjeta
 
 }

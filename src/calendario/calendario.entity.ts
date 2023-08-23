@@ -24,7 +24,7 @@ export class Calendario {
   //   @JoinTable()
   //   rutas: Ruta[]
   
-  @OneToMany(() => CalendarioRuta, (calendarioRuta) => calendarioRuta.calendario)
+  @OneToMany(() => CalendarioRuta, (calendarioRuta) => calendarioRuta.calendario, { onDelete: "CASCADE" })
   rutasCalendario: CalendarioRuta[]
 
 }

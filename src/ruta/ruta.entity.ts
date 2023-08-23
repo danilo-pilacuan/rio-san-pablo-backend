@@ -26,12 +26,12 @@ export class Ruta {
   @Column({ type: "boolean", default: true })
   activa: boolean;
 
-  @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.ruta)
+  @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.ruta, { onDelete: "CASCADE" })
     tarjetas: Tarjeta[]
   
   // @ManyToMany(() => Calendario, (calendario) => calendario.rutas)
   //   calendarios: Calendario[]
 
-  @OneToMany(() => CalendarioRuta, (calendarioRuta) => calendarioRuta.ruta)
+  @OneToMany(() => CalendarioRuta, (calendarioRuta) => calendarioRuta.ruta, { onDelete: "CASCADE" })
   rutasCalendario: CalendarioRuta[]
 }

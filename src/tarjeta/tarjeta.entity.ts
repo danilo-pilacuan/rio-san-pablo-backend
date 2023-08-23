@@ -50,12 +50,12 @@ export class Tarjeta {
   public controlador: Socio;
 
 
-  @OneToMany(() => Parada, (parada) => parada.tarjeta)
+  @OneToMany(() => Parada, (parada) => parada.tarjeta, { onDelete: "CASCADE" })
   paradas: Parada[]
   
-  @OneToOne(() => Aporte, (aporte) => aporte.tarjeta)
+  @OneToOne(() => Aporte, (aporte) => aporte.tarjeta, { onDelete: "CASCADE" })
   aporte: Aporte
 
-  @ManyToOne(() => Reporte, (reporte) => reporte.tarjetas)
+  @ManyToOne(() => Reporte, (reporte) => reporte.tarjetas, { onDelete: "CASCADE" })
   reporte: Reporte
 }

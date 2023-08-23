@@ -22,10 +22,10 @@ export class Unidad {
   @Column({ type: "boolean", default: true })
   activo: boolean;
 
-  @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.unidad)
+  @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.unidad, { onDelete: "CASCADE" })
     tarjetas: Tarjeta[]
 
-  @OneToMany(() => Flete, (flete) => flete.unidad)
+  @OneToMany(() => Flete, (flete) => flete.unidad, { onDelete: "CASCADE" })
     fletes: Flete[]
   
 }

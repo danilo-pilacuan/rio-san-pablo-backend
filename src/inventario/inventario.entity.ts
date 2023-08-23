@@ -28,6 +28,6 @@ export class Inventario {
   @Column({ default: true })
   activa: boolean;
   
-  @ManyToOne(() => Socio, (socio) => socio.inventarios)
+  @ManyToOne(() => Socio, (socio) => socio.inventarios, { onDelete: "CASCADE" })
   socio: Socio
 }

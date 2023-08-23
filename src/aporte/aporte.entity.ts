@@ -42,16 +42,16 @@ export class Aporte {
   @Column({type: "decimal", precision: 10, scale: 2, default: 0})
   total: number;
 
-  @ManyToOne(() => Reporte, (reporte) => reporte.aportes)
+  @ManyToOne(() => Reporte, (reporte) => reporte.aportes, { onDelete: "CASCADE" })
     reporte: Reporte
 
-  @ManyToOne(() => Socio, (socio) => socio.aportes)
+  @ManyToOne(() => Socio, (socio) => socio.aportes, { onDelete: "CASCADE" })
   socio: Socio
   
-  @ManyToOne(() => Recibo, (recibo) => recibo.aporte)
+  @ManyToOne(() => Recibo, (recibo) => recibo.aporte, { onDelete: "CASCADE" })
   recibo: Recibo
   
-  @ManyToOne(() => Tarjeta, (tarjeta) => tarjeta.aporte)
+  @ManyToOne(() => Tarjeta, (tarjeta) => tarjeta.aporte, { onDelete: "CASCADE" })
   tarjeta: Tarjeta
 
   //socio, recibo, tarjeta

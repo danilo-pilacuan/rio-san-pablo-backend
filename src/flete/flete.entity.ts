@@ -36,7 +36,7 @@ export class Flete {
   @Column({ type: "boolean", default: true })
   activa: boolean;
 
-  @ManyToOne(()=>Unidad,(unidad)=>unidad.fletes)
+  @ManyToOne(()=>Unidad,(unidad)=>unidad.fletes, { onDelete: "CASCADE" })
     unidad:Unidad;
 
 //   @OneToMany(() => Tarjeta, (tarjeta) => tarjeta.flete)
